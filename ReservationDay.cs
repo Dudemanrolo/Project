@@ -11,7 +11,7 @@ namespace ConsoleApp7
 {
     internal class ReservationDay
     {
-        List<Reservation> DailyOperations = new List<Reservation>(); // TEST
+        List<Reservation> DailyOperations = new List<Reservation>(); // TEST More test
         public int MonthNumber { get; set; }
         public int DayNumber { get; set; }
         private static int IdNumber = 00000;
