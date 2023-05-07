@@ -34,6 +34,9 @@ namespace ConsoleApp7
           days.RemoveAt(Index);
           Console.WriteLine("Entry has been deleted");
         }
-
+        public ReservationDay AccessElement(int Index)
+        {
+            return this.days.ElementAt(Index);
+        }
     }
 }
