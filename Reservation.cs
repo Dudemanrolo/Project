@@ -48,7 +48,7 @@ namespace ConsoleApp7
                 Console.Write($"  {this.PhoneNumber}");
             }
         }
-        //Method that will display IDnumber, FirstName, LastName, PartySize, and TimeOfRequest as well as Notes and PhoneNumber as long as they are not null
+        //Void method that will display IDnumber, FirstName, LastName, PartySize, and TimeOfRequest as well as Notes and PhoneNumber as long as they are not null
     
 
     }
