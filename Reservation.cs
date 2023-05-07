@@ -11,13 +11,20 @@ namespace ConsoleApp7
     internal class Reservation
     {
         public int IDnumber { get; set; }
+        //Getter and setter for IDnumber
         public string FirstName { get; set; }
+        //Getter and setter for FirstName
         public string LastName { get; set; }
+        //Getter and setter for LastName
         public int PartySize { get; set; }
+        //Getter and setter for PartySize
         public string TimeofRequest { get; set; }
+        //Getter and setter for TimeOfRequest
         public string? Notes { get; set; }
-        
+        //Getter and setter for Notes
+
         public string? PhoneNumber { get; set; }
+        //Getter and setter for Phone
 
         public Reservation(int Id, string FName, string Lname, int Psize, string TORequest)
         {
