@@ -24,7 +24,7 @@ namespace ConsoleApp7
         //Getter and setter for Notes
 
         public string? PhoneNumber { get; set; }
-        //Getter and setter for Phone
+        //Getter and setter for PhoneNumber
 
         public Reservation(int Id, string FName, string Lname, int Psize, string TORequest)
         {
@@ -35,6 +35,7 @@ namespace ConsoleApp7
             this.TimeofRequest = TORequest;
             
         }
+        //Object for a specific reservation that keeps track of Id, FName, Lname, Psize, TORequest
         public void DisplayRes()
         {
             Console.WriteLine($"{this.IDnumber}      {this.FirstName}      {this.LastName}      {this.PartySize}      {this.TimeofRequest} ");
@@ -47,6 +48,7 @@ namespace ConsoleApp7
                 Console.Write($"  {this.PhoneNumber}");
             }
         }
+        //Method that will display IDnumber, FirstName, LastName, PartySize, and TimeOfRequest as well as Notes and PhoneNumber as long as they are not null
     
 
     }
