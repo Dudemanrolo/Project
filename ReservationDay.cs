@@ -21,26 +21,44 @@ namespace ConsoleApp7
             this.DayNumber = Day;
             
         }
-        public void AddReservation(int Id, string FirstName, string LastName, int PartySize, string TimeOfRequest)
+        public void AddReservation(int Id, string FirstName, string LastName, string PartySize, string TimeOfRequest)
         {
             this.DailyOperations.Add(new Reservation(Id, FirstName, LastName, PartySize, TimeOfRequest));
         }
         public void AddReservation()
         {
-          
-            int Id = IdNumber + 1;
-            IdNumber += 1;
-            Console.Write("Enter the First Name of the Person who Made a Reservation:");
-            string FirstName = Console.ReadLine();
-            Console.Write("Enter the Last Name of the Person who Made a Reservation:");
-            string LastName = Console.ReadLine();
-            Console.Write("Enter the Size of the Party for the Reservation:");
-            int PartySize = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Enter the The Time Requested for the Reservation:");
-            string TimeOfRequest = Console.ReadLine();
-            DailyOperations.Add(new Reservation(Id, FirstName, LastName, PartySize, TimeOfRequest));
-            Console.WriteLine("Successfully Added a New Reservation");
-            this.DisplayReservations();
+            try
+            {
+                int Id = IdNumber + 1;
+                IdNumber += 1;
+                Console.WriteLine("Enter the First Name of the Person who Made a Reservation:");
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+                string FirstName = Console.ReadLine();
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+                Console.WriteLine("Enter the Last Name of the Person who Made a Reservation:");
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+                string LastName = Console.ReadLine();
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+                Console.WriteLine("Enter the Size of the Party for the Reservation:");
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+                string PartySize = Console.ReadLine();
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+                Console.WriteLine("Enter the The Time Requested for the Reservation:");
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+                string TimeOfRequest = Console.ReadLine();
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+                DailyOperations.Add(new Reservation(Id, FirstName, LastName, PartySize, TimeOfRequest));
+                Console.WriteLine("Successfully Added a New Reservation");
+                Console.WriteLine("");
+                Console.WriteLine("");
+                this.DisplayReservations();
+                Console.WriteLine("");
+                Console.WriteLine("");
+            }
+            catch
+            {
+                
+            }
 
         }
         public void DisplayReservations()
@@ -55,57 +73,75 @@ namespace ConsoleApp7
         {
             bool done = false;
             this.DisplayReservations();
-            Console.WriteLine("Which reservation would you like to edit? ");
+            Console.WriteLine("Enter the ID shown Above of the Reservation you would like to edit: ");
             int userEditID = Convert.ToInt32(Console.ReadLine());
             int userInput;
-            while (done != false)
+            try
             {
-
-                Console.WriteLine("Enter the Number of the Value you would like to edit: ");
-                Console.WriteLine(" 0: Exit 1: First Name, 2: Last Name, 3: Party Size, 4: Time of Request, 5: Notes, 6: Phone Number");
-                userInput = Convert.ToInt32(Console.ReadLine());
-                switch (userInput)
+                while (done != true)
                 {
-                    case 0:
-                        done = true;
-                    break;
-                    case 1:
-                       Console.WriteLine("Enter the New Value: ");
-                       DailyOperations.ElementAt(userEditID - 1).FirstName = Console.ReadLine();
-                       Console.WriteLine("Succeeded to Edit Reservation");
-                    break;
-                    case 2:
-                       Console.WriteLine("Enter the New Value: ");
-                       DailyOperations.ElementAt(userEditID - 1).LastName = Console.ReadLine();
-                       Console.WriteLine("Succeeded to Edit Reservation");
-                    break;
-                    case 3:
-                       Console.WriteLine("Enter the New Value: ");
-                       DailyOperations.ElementAt(userEditID = 1).PartySize = Convert.ToInt32(Console.ReadLine());
-                       Console.WriteLine("Succeeded to Edit Reservation");
-                    break;
-                    case 4:
-                       Console.WriteLine("Enter the New Value: ");
-                       DailyOperations.ElementAt(userEditID - 1).TimeofRequest = Console.ReadLine();
-                       Console.WriteLine("Succeeded to Edit Reservation");
-                    break;
-                    case 5:
-                       Console.WriteLine("Enter the New Value: ");
-                       DailyOperations.ElementAt(userEditID - 1).Notes = Console.ReadLine();
-                    break;
-                    case 6:
-                        Console.WriteLine("Enter the New Value: ");
-                        DailyOperations.ElementAt(userEditID - 1).PhoneNumber= Console.ReadLine();
-                    break;
-               
+                    Console.WriteLine("Enter the Number of the Value you would like to edit: ");
+                    Console.WriteLine(" 0: Exit 1: First Name, 2: Last Name, 3: Party Size, 4: Time of Request, 5: Notes, 6: Phone Number");
+                    userInput = Convert.ToInt32(Console.ReadLine());
+                    switch (userInput)
+                    {
+                        case 0:
+                            done = true;
+                            break;
+                        case 1:
+                            Console.WriteLine("Enter the New Value: ");
+#pragma warning disable CS8601 // Possible null reference assignment.
+                            DailyOperations.ElementAt(userEditID - 1).FirstName = Console.ReadLine();
+#pragma warning restore CS8601 // Possible null reference assignment.
+                            Console.WriteLine("Succeeded to Edit Reservation");
+                            Console.WriteLine("");
+                            break;
+                        case 2:
+                            Console.WriteLine("Enter the New Value: ");
+#pragma warning disable CS8601 // Possible null reference assignment.
+                            DailyOperations.ElementAt(userEditID - 1).LastName = Console.ReadLine();
+#pragma warning restore CS8601 // Possible null reference assignment.
+                            Console.WriteLine("Succeeded to Edit Reservation");
+                            Console.WriteLine("");
+                            break;
+                        case 3:
+                            Console.WriteLine("Enter the New Value: ");
+#pragma warning disable CS8601 // Possible null reference assignment.
+                            DailyOperations.ElementAt(userEditID - 1).PartySize = Console.ReadLine();
+#pragma warning restore CS8601 // Possible null reference assignment.
+                            Console.WriteLine("Succeeded to Edit Reservation");
+                            Console.WriteLine("");
+                            break;
+                        case 4:
+                            Console.WriteLine("Enter the New Value: ");
+#pragma warning disable CS8601 // Possible null reference assignment.
+                            DailyOperations.ElementAt(userEditID - 1).TimeofRequest = Console.ReadLine();
+#pragma warning restore CS8601 // Possible null reference assignment.
+                            Console.WriteLine("Succeeded to Edit Reservation");
+                            Console.WriteLine("");
+                            break;
+                        case 5:
+                            Console.WriteLine("Enter the New Value: ");
+                            DailyOperations.ElementAt(userEditID - 1).Notes = Console.ReadLine();
+                            Console.WriteLine("");
+                            break;
+                        case 6:
+                            Console.WriteLine("Enter the New Value: ");
+                            DailyOperations.ElementAt(userEditID - 1).PhoneNumber = Console.ReadLine();
+                            Console.WriteLine("");
+
+                            break;
+                    }
 
 
-                
+
+                }
+             } catch (Exception e)
+            {
+                Console.WriteLine("An Error Has Occured, Please try Again");
             }
 
-
             }
-        }
                 
             
         
@@ -116,6 +152,8 @@ namespace ConsoleApp7
             Console.WriteLine("Enter the ID of the Reservation you would like to remove:");
             int removalID = Convert.ToInt32(Console.ReadLine());
             DailyOperations.RemoveAt(DailyOperations.FindIndex(x => x.IDnumber == removalID ));
+            Console.WriteLine("Successfully Removed the Reservation");
+            this.DisplayReservations();
         }
     }
 }

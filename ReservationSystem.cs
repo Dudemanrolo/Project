@@ -11,9 +11,10 @@ namespace ConsoleApp7
 {
     internal class ReservationSystem
     {
-        List<ReservationDay> days = new List<ReservationDay>();
+        public List<ReservationDay> days = new List<ReservationDay>();
         public void AddReservationDay()
         {
+            this.DisplayDaysOfOperation();
             Console.WriteLine("Enter the Month number of the Date you'd like to add");
             int monthNumber = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter the Day number of the Date you'd like to add");
@@ -39,6 +40,7 @@ namespace ConsoleApp7
         {
             try
             {
+                this.DisplayDaysOfOperation();
                 Console.WriteLine("Enter the Month of the Date to be removed");
                 int month = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("Enter the Day of the Date to be removed");
@@ -105,6 +107,7 @@ namespace ConsoleApp7
             while (done != true) {
                 int userInput = 0;
                 Console.WriteLine("Would you Like to: ");
+                this.DisplayDaysOfOperation();
                 Console.WriteLine("0: Quit 1: Add a New Reservation, 2: Remove a Reservation, 3: Edit a Reservation");
                 userInput = Convert.ToInt32(Console.ReadLine());
                 int month;
@@ -151,8 +154,16 @@ namespace ConsoleApp7
                         month = Convert.ToInt32(Console.ReadLine());
                         Console.WriteLine("Enter the Day Number of the Reservation you would like to Edit:");
                         day = Convert.ToInt32(Console.ReadLine());
-                        this.days.ElementAt(days.FindIndex(x => x.MonthNumber == month && x.DayNumber == day)).EditReservation();
-                      break;
+                        if (days.Exists(x => x.MonthNumber == month && x.DayNumber == day))
+                        {
+                            this.days.ElementAt(days.FindIndex(x => x.MonthNumber == month && x.DayNumber == day)).EditReservation();
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("This Day of Operations Does Not Exist");
+                        }
+                        break;
                         
                 }
             }

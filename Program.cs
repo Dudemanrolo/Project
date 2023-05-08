@@ -9,32 +9,56 @@ namespace ConsoleApp7
         {
             ReservationSystem MainResSystem = new ReservationSystem();
             MainResSystem.AddReservationDay(0, 0);
-            MainResSystem.AccessElement(0).AddReservation(0,"Benjamin", "Smith", 0, "0:00");
             Console.WriteLine("Welcome User ");
-            MainResSystem.DisplayDaysOfOperation();
             bool done = false;
             while (done!= true)
             {
+                
+                Console.WriteLine("");
+                Console.WriteLine("");
+                Console.WriteLine("");
+                Console.WriteLine("");
+                Console.WriteLine("");
+                Console.WriteLine("");
                 Console.WriteLine("Please enter a command: ");
-                Console.WriteLine(" 0: Quit, 1: Manage Daily Opperations, 2: View Reservations of a Specific Day, 3: Add/Remove/Edit Reservation Menu");
-                int UserCommand = Convert.ToInt32(Console.ReadLine());
-
-              
-                switch (UserCommand)
+                Console.WriteLine(" 0: Quit, 1: Manage Daily Opperations, 2: View Reservations of a Specific Day, 3: Add/Remove/Edit Reservation Menu, 4: Display All Reservations");
+                try
                 {
-                    case 0:
-                        done = true;
-                        break;
-                    case 1:
-                        MainResSystem.dailyOperationUI();
-                        break;
-                        
-                    case 2:
-                        MainResSystem.IndividualDayViewUI();
-                        break;
-                    case 3:
-                        MainResSystem.ReservationMenuUI();
-                    break;
+                    int UserCommand = Convert.ToInt32(Console.ReadLine());
+                    Console.Clear();
+                    switch (UserCommand)
+                    {
+                        case 0:
+                            done = true;
+                            break;
+                        case 1:
+                            MainResSystem.dailyOperationUI();
+                            break;
+
+                        case 2:
+                            MainResSystem.IndividualDayViewUI();
+                            break;
+                        case 3:
+                            MainResSystem.ReservationMenuUI();
+                            break;
+                        case 4:
+                            int totalDays = 1;
+                            foreach (ReservationDay i in MainResSystem.days)
+                            {
+                                Console.WriteLine($"#{totalDays}: {i.MonthNumber}/{i.DayNumber}");
+                                i.DisplayReservations();
+                                totalDays += 1;
+                            }
+
+                            break;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("an Error Has Occured, Please try again");
+                }
+                
+                
                        
 
 
@@ -43,4 +67,3 @@ namespace ConsoleApp7
             }
         }
     }
-}
