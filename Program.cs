@@ -8,15 +8,15 @@ namespace ConsoleApp7
         static void Main(string[] args)
         {
             ReservationSystem MainResSystem = new ReservationSystem();
-            MainResSystem.AddReservationDay(1, 1);
-            MainResSystem.AccessElement(0).AddReservation("Benjamin", "Smith", 0, "0:00");
+            MainResSystem.AddReservationDay(0, 0);
+            MainResSystem.AccessElement(0).AddReservation(0,"Benjamin", "Smith", 0, "0:00");
             Console.WriteLine("Welcome User ");
             MainResSystem.DisplayDaysOfOperation();
             bool done = false;
             while (done!= true)
             {
-                Console.WriteLine("Please enter What you would like to do: ");
-                Console.WriteLine(" 0: Quit, 1: Manage Daily Opperations, 2: View Reservations of a Specific Day");
+                Console.WriteLine("Please enter a command: ");
+                Console.WriteLine(" 0: Quit, 1: Manage Daily Opperations, 2: View Reservations of a Specific Day, 3: Add/Remove/Edit Reservation Menu");
                 int UserCommand = Convert.ToInt32(Console.ReadLine());
 
               
@@ -30,10 +30,12 @@ namespace ConsoleApp7
                         break;
                         
                     case 2:
-                        Console.WriteLine("Enter the Index of the Day you'd like to remove");
+                        MainResSystem.IndividualDayViewUI();
                         break;
-                        
-
+                    case 3:
+                        MainResSystem.ReservationMenuUI();
+                    break;
+                       
 
 
 
