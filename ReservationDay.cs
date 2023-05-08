@@ -55,15 +55,17 @@ namespace ConsoleApp7
                 Console.WriteLine("");
                 Console.WriteLine("");
             }
-            catch
+            catch (Exception e)
             {
-                
+                Console.Clear();
+                Console.WriteLine("An Error Has Occured, Please try again");
+
             }
 
         }
         public void DisplayReservations()
         {
-            Console.WriteLine($"{"ID:",-5}{"First Name:",-15}{"Last Name:",-20}{"Party Size:",-25}{"Time of Request:",-30}");
+            Console.WriteLine($"{"ID:",-7}{"First Name:",-17}{"Last Name:",-22}{"Party Size:",-27}{"Time of Request:",-32}");
             foreach (var i in DailyOperations) 
             {
                 i.DisplayRes();
@@ -138,12 +140,12 @@ namespace ConsoleApp7
                 }
              } catch (Exception e)
             {
+                Console.Clear();
                 Console.WriteLine("An Error Has Occured, Please try Again");
             }
 
             }
                 
-            
         
 
         public void RemoveReservation()

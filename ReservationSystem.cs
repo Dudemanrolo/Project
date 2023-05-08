@@ -14,25 +14,26 @@ namespace ConsoleApp7
         public List<ReservationDay> days = new List<ReservationDay>();
         public void AddReservationDay()
         {
-            this.DisplayDaysOfOperation();
+            this.DisplayAllReservations();
             Console.WriteLine("Enter the Month number of the Date you'd like to add");
             int monthNumber = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter the Day number of the Date you'd like to add");
             int dayNumber = Convert.ToInt32(Console.ReadLine());
             this.days.Add(new ReservationDay(monthNumber, dayNumber));
             Console.WriteLine("Entry has been added");
-            this.DisplayDaysOfOperation(); 
+            this.DisplayAllReservations(); 
         }
         public void AddReservationDay(int x, int y)
         {
             this.days.Add(new ReservationDay(x,y));
         }
-        public void DisplayDaysOfOperation()
+        public void DisplayAllReservations()
         {
             int totalDays = 1;
-           foreach (var i in days)
+            foreach (ReservationDay i in this.days)
             {
                 Console.WriteLine($"#{totalDays}: {i.MonthNumber}/{i.DayNumber}");
+                i.DisplayReservations();
                 totalDays += 1;
             }
         }
@@ -40,7 +41,7 @@ namespace ConsoleApp7
         {
             try
             {
-                this.DisplayDaysOfOperation();
+                this.DisplayAllReservations();
                 Console.WriteLine("Enter the Month of the Date to be removed");
                 int month = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("Enter the Day of the Date to be removed");
@@ -48,7 +49,7 @@ namespace ConsoleApp7
                 int Index = days.FindIndex(x => x.MonthNumber == month && x.DayNumber == day);
                 this.days.RemoveAt(Index);
                 Console.WriteLine("Entry has been deleted");
-                this.DisplayDaysOfOperation();
+                this.DisplayAllReservations();
             } catch (Exception e)
             {
                 Console.WriteLine("An Error has Occured");
@@ -90,13 +91,34 @@ namespace ConsoleApp7
         {
             try
             {
-                this.DisplayDaysOfOperation();
-                Console.WriteLine("Enter the Index of the Day you would like to view reservations of");
-                int userInput = Convert.ToInt32(Console.ReadLine());
-                this.days.ElementAt(userInput - 1).DisplayReservations();
+                bool done = false;
+                while (done != true)
+                {
+                    try
+                    {
+                        Console.WriteLine("Enter the Month of the Day You Would Like to see");
+                        int month = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Enter the Day You Would Like to See");
+                        int day = Convert.ToInt32(Console.ReadLine());
+                        this.days.ElementAt(days.FindIndex(x => x.MonthNumber == month && x.DayNumber == day)).DisplayReservations();
+                        Console.WriteLine("Would You Like To view Another Date? 0: No 1: Yes");
+                        int userinput = Convert.ToInt32(Console.ReadLine());
+                        if (userinput == 0)
+                        {
+                            done = true;
+                        }
+                    } catch (Exception e)
+                    {
+                        Console.WriteLine("Error Has Occured, Please Try Again");
+                    }
+                   
+
+                }
+
             }
             catch (Exception e)
             {
+                Console.Clear();
                 Console.WriteLine("An Error has Occured");;
             }
 
@@ -106,8 +128,8 @@ namespace ConsoleApp7
             bool done = false;
             while (done != true) {
                 int userInput = 0;
+                this.DisplayAllReservations();
                 Console.WriteLine("Would you Like to: ");
-                this.DisplayDaysOfOperation();
                 Console.WriteLine("0: Quit 1: Add a New Reservation, 2: Remove a Reservation, 3: Edit a Reservation");
                 userInput = Convert.ToInt32(Console.ReadLine());
                 int month;
@@ -130,7 +152,9 @@ namespace ConsoleApp7
                         }
                         else 
                         {
-                            Console.WriteLine("This Day of Operations Does Not Exist");
+                            this.days.Add(new ReservationDay(month, day));
+                            this.days.ElementAt(days.FindIndex(x => x.MonthNumber == month && x.DayNumber == day)).AddReservation();
+
                         }
 
                       break;

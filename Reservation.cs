@@ -30,7 +30,7 @@ namespace ConsoleApp7
         }
         public void DisplayRes()
         {
-            Console.WriteLine($"{this.IDnumber, -5}{this.FirstName, -15}{this.LastName, -20}{this.PartySize, -25}{this.TimeofRequest, -30} ");
+            Console.WriteLine($"{this.IDnumber, -12}{this.FirstName, -17}{this.LastName, -22}{this.PartySize, -27}{this.TimeofRequest, -32} ");
             if (this.Notes != null)
             {
                 Console.Write(this.Notes);
