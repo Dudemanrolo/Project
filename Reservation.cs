@@ -13,13 +13,13 @@ namespace ConsoleApp7
         public int IDnumber { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public int PartySize { get; set; }
+        public string PartySize { get; set; }
         public string TimeofRequest { get; set; }
         public string? Notes { get; set; }
         
         public string? PhoneNumber { get; set; }
 
-        public Reservation(int Id, string FName, string Lname, int Psize, string TORequest)
+        public Reservation(int Id, string FName, string Lname, string Psize, string TORequest)
         {
             this.IDnumber = Id;
             this.FirstName = FName;
@@ -30,7 +30,7 @@ namespace ConsoleApp7
         }
         public void DisplayRes()
         {
-            Console.WriteLine($"{this.IDnumber}      {this.FirstName}      {this.LastName}      {this.PartySize}      {this.TimeofRequest} ");
+            Console.WriteLine($"{this.IDnumber, -12}{this.FirstName, -17}{this.LastName, -22}{this.PartySize, -27}{this.TimeofRequest, -32} ");
             if (this.Notes != null)
             {
                 Console.Write(this.Notes);
@@ -40,6 +40,7 @@ namespace ConsoleApp7
                 Console.Write($"  {this.PhoneNumber}");
             }
         }
+
     
 
     }
