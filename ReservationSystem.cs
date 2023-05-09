@@ -59,6 +59,7 @@ namespace ConsoleApp7
         {
             return this.days.ElementAt(Index);
         }
+        //Getter to access the ReservationDay List
         public void dailyOperationUI()
         {
             bool done = false;
