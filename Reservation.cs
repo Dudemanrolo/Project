@@ -11,6 +11,7 @@ namespace ConsoleApp7
     internal class Reservation
     {
         public int IDnumber { get; set; }
+        //Getter and setter for IDnumber
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PartySize { get; set; }
